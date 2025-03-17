@@ -1,6 +1,9 @@
 package arrays
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestSum(t *testing.T) {
 
@@ -35,4 +38,14 @@ func BenchmarkSum(t *testing.B) {
     for i :=0; i<t.N; i++ {
         Sum(numbers)
     }
+}
+
+
+func TestSumAll(t *testing.T) {
+    got := SumAll([]int{1,2,3}, []int{4}, []int{5,5})
+    want := []int{6,4,10}
+
+    if !reflect.DeepEqual(got, want) {
+		t.Errorf("got %v want %v", got, want)
+	}
 }
